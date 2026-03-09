@@ -12,6 +12,9 @@ steps:
     Dockerfile: Dockerfile
     tags: devops-demo
 
+- script: dir
+  displayName: Show Repository Files
+  
 - script: |
     kubectl apply -f appp1/deployment.yaml
     kubectl apply -f appp1/service.yaml
