@@ -1,0 +1,18 @@
+trigger:
+- main
+
+pool:
+  name: AzurePoolAgent
+
+steps:
+
+- task: Docker@2
+  inputs:
+    command: build
+    Dockerfile: Dockerfile
+    tags: devops-demo
+
+- script: |
+    kubectl apply -f appp1/deployment.yaml
+    kubectl apply -f appp1/service.yaml
+  displayName: Deploy to Kubernetes
